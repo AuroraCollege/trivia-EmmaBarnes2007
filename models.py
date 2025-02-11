@@ -16,7 +16,7 @@ class Question(Base): # Model for the questions table
     correct_answer = Column(String, nullable=False) # The correct answer to the question (a, b, c, or d)
 
 class User(Base):
-    __tablename__ = 'user'
+    __tablename__ = 'users'
     id = Column(Integer, primary_key=True)
     name = Column(String, nullable=False)
     score = Column(String, nullable=False)

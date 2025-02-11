@@ -38,14 +38,9 @@ def submit():
             results.append((question.question, "Incorrect!"))
     return render_template("results.html", results=results) 
 
-# Create a new User object
-user = User(name=name, score=score) 
-# Add the user to the session
-session.add(user) 
-# Commit the changes to the database
-session.commit() 
 
-return render_template("results.html", name=name, score=score)
+
+
 
 if __name__ == "__main__":
     app.run(debug=True)
