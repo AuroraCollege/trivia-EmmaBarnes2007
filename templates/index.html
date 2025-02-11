@@ -9,6 +9,13 @@
         
 </head>
 <style>
+    body {
+        background-color: lime;
+    }
+
+
+
+
     h1 {
         color: red;
         border: 2px solid blue;
@@ -26,6 +33,11 @@
     .box {
         background-color: lightgreen;
         border: 2px solid blue;
+        font-family: monospace;
+    }
+
+    .questions {
+        color: blue;
     }
 </style>
 <body>
@@ -38,12 +50,12 @@
         {% for question in questions %}
         
             <div>
-                <p>{{ question.question }}</p>
+                <span class="questions"><p>{{ question.question }}</p>
                 <input type="hidden" name="question_id" value="{{ question.id }}">
                 <input type="radio" name="{{ question.id }}" value="a"> {{ question.choice_a }}<br>
                 <input type="radio" name="{{ question.id }}" value="b"> {{ question.choice_b }}<br>
                 <input type="radio" name="{{ question.id }}" value="c"> {{ question.choice_c }}<br>
-                <input type="radio" name="{{ question.id }}" value="d"> {{ question.choice_d }}<br>
+                <input type="radio" name="{{ question.id }}" value="d"> {{ question.choice_d }}<br></span>
             </div>
         {% endfor %}
         <button type="submit">Submit</button>
