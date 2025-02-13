@@ -27,18 +27,24 @@ def submit():
     results = []
     name = request.form.get("name")
     score = 0
+
     for question in session.query(Question).all():
         question_id = question.id
         user_answer = request.form.get(f"{question_id}")
         
-        if user_answer and question.correct_answer.lower() == user_answer.lower():
+        if user_answer and question.correct_answer.lower() == user_answer.lower(): #correct answer
             results.append((question.question, "Correct!"))
             score += 1 
         else:
-            results.append((question.question, "Incorrect!"))
+            results.append((question.question, "Incorrect!")) #wrong answer
     return render_template("results.html", results=results) 
-
-
+ 
+    # Store the attempt in the database
+    user = User(name=name, score=score) 
+    session.add(user) 
+    session.commit()
+    
+    return render_template("results.html", results=results, name=name, score=score)
 
 
 
